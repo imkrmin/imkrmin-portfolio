@@ -11,6 +11,9 @@ const config: Config = {
       snow: ["SMUSnowflake-Bold", "sans-serif"],
       pretendard: ["var(--font-pretendard)", "sans-serif"],
     },
+    backgroundImage: {
+      header: "url('/images/bg.jpg')",
+    },
     extend: {},
   },
   plugins: [],
