@@ -1,0 +1,58 @@
+export const HEADER_ICONS = [
+  {
+    src: "/icons/project.svg",
+    alt: "프로젝트 아이콘",
+    tooltipText: "프로젝트 보러가기",
+    href: "#project",
+    width: 150,
+    height: 150,
+  },
+  {
+    src: "/icons/guest-book.svg",
+    alt: "방명록 아이콘",
+    tooltipText: "방명록 작성하기",
+    href: "#guest-book",
+    width: 150,
+    height: 150,
+  },
+  {
+    src: "/icons/profileicon.svg",
+    alt: "프로필 아이콘",
+    tooltipText: "안녕하세요. 프론트엔드 개발자 임주민입니다.",
+    href: "#about",
+    width: 350,
+    height: 350,
+  },
+  {
+    src: "/icons/contact.svg",
+    alt: "연락하기 아이콘",
+    tooltipText: "연락하기",
+    href: "#contact",
+    width: 100,
+    height: 50,
+  },
+  {
+    src: "/icons/download.svg",
+    alt: "다운로드 아이콘",
+    tooltipText: "이력서 다운로드",
+    href: "",
+    width: 150,
+    height: 150,
+  },
+];
+
+export const TECH_STACK_ICONS = [
+  { label: "Html" },
+  { label: "JavaScript" },
+  { label: "TypeScript" },
+  { label: "Next.js" },
+  { label: "React" },
+  { label: "Css" },
+  { label: "Tailwind.css" },
+  { label: "Zustand" },
+  { label: "MongoDB" },
+  { label: "Postman" },
+  { label: "Github" },
+  { label: "Figma" },
+  { label: "Notion" },
+];
