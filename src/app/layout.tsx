@@ -3,9 +3,10 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 const pretendard = localFont({
-  src: "./fonts/PretendardVariable.woff2",
-  variable: "--font-pretendard",
+  src: "../fonts/PretendardVariable.woff2",
   display: "swap",
+  weight: "45 920",
+  variable: "--font-pretendard",
 });
 
 export const metadata: Metadata = {
@@ -20,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={`${pretendard.variable}`}>
-      <body className="font-pretendard flex flex-col w-full p-10 mx-auto justify-center">
+      <body className="relative font-pretendard flex flex-col w-full mx-auto justify-center">
         {children}
       </body>
     </html>
