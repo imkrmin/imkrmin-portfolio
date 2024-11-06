@@ -24,7 +24,7 @@ const Menu = () => {
           }
         });
       },
-      { threshold: 0.7 }
+      { threshold: 0.6 }
     );
 
     sections.forEach(section => {

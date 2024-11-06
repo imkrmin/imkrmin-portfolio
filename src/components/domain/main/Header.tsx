@@ -27,7 +27,7 @@ const Header = () => {
     ));
 
   return (
-    <section className="flex flex-col bg-header bg-cover animate-gradient-move">
+    <section className="sticky top-0 flex flex-col bg-header bg-cover animate-gradient-move">
       <div className="flex w-full h-full justify-center items-center gap-[85px]">
         {renderIcons()}
       </div>

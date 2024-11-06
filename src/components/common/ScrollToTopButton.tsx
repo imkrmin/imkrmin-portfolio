@@ -16,7 +16,7 @@ const ScrollToTopButton = () => {
       whileHover={{ scale: 1.3 }}
       transition={{ type: "spring", stiffness: 500, damping: 20 }}
       onClick={scrollToTop}
-      className="fixed bottom-8 right-8 cursor-pointer"
+      className="fixed bottom-8 right-8 cursor-pointer z-20"
     >
       <IoMdArrowDropupCircle size={60} />
     </motion.div>
