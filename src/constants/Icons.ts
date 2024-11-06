@@ -40,19 +40,3 @@ export const HEADER_ICONS = [
     height: 150,
   },
 ];
-
-export const TECH_STACK_ICONS = [
-  { label: "Html" },
-  { label: "JavaScript" },
-  { label: "TypeScript" },
-  { label: "Next.js" },
-  { label: "React" },
-  { label: "Css" },
-  { label: "Tailwind.css" },
-  { label: "Zustand" },
-  { label: "MongoDB" },
-  { label: "Postman" },
-  { label: "Github" },
-  { label: "Figma" },
-  { label: "Notion" },
-];
