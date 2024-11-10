@@ -13,6 +13,10 @@ const config: Config = {
       okgung: ["OKGUNG", "sans-serif"],
       pretendard: ["var(--font-pretendard)", "sans-serif"],
     },
+    screens: {
+      tablet: { max: "1199px" },
+      mobile: { max: "767px" },
+    },
     extend: {
       backgroundImage: {
         header: "url('/images/bg(2).jpg')",
@@ -25,6 +29,7 @@ const config: Config = {
       animation: {
         "gradient-move": "gradientAnimation 4s linear infinite alternate",
       },
+
       keyframes: {
         gradientAnimation: {
           "0%": {

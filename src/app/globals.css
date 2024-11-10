@@ -31,8 +31,7 @@
   }
 
   body {
-    background-color: rgb(35, 35, 35);
-    color: rgb(170, 170, 170);
+    background-color: #262626;
     color: #bcbcbc;
   }
 
@@ -48,5 +47,29 @@
 
   input {
     outline: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  ::-webkit-scrollbar {
+    display: block;
+    height: 8px;
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #bcbcbc;
+    border-radius: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #262626;
   }
 }
