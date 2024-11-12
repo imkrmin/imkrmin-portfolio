@@ -7,7 +7,7 @@ const SlidingText = () => {
   return (
     <div className="relative overflow-hidden h-[380px]">
       <motion.div
-        className="absolute font-snow text-[200px] -bottom-[40px] whitespace-nowrap text-white opacity-10 w-[50%]"
+        className="absolute font-snow text-[200px] -bottom-[40px] whitespace-nowrap text-[#171717] opacity-10 w-[50%]"
         variants={SLIDER_VARIANTS}
         initial="initial"
         animate="animate"

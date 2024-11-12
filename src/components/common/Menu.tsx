@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const menuItems = [
   { label: "About me", href: "#about" },
-  { label: "Project", href: "#project" },
+  { label: "Projects", href: "#projects" },
   { label: "Guest Book", href: "#guest-book" },
   { label: "Contact", href: "#contact" },
 ];
