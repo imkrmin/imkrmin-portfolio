@@ -4,10 +4,11 @@ import ProjectModal from "@/components/common/modal/ProjectModal";
 import Tag from "@/components/common/Tag";
 import useOpenToggle from "@/hooks/useOpenToggle";
 import { motion } from "framer-motion";
+import { TProjectData } from "@/types/Projects";
 import Image from "next/image";
 
-const ProjectCard = () => {
-  const { isOpen, openToggle } = useOpenToggle();
+const ProjectCard = ({ project }: { project: TProjectData }) => {
+  const { isOpen, openToggle, setIsOpen } = useOpenToggle();
 
   return (
     <motion.div
@@ -18,27 +19,27 @@ const ProjectCard = () => {
       onClick={openToggle}
     >
       <Image
-        src={"/images/profileimg.jpg"}
+        src={`/images/projects/${project.images[0]}.jpg`}
         alt={"프로젝트 이미지"}
         width={350}
         height={200}
-        className="w-full h-[280px] object-cover opacity-80"
+        className="w-full h-[280px] opacity-80"
       />
       <div className="relative flex flex-col p-5 gap-1">
         <div className="flex justify-between items-center">
-          <h1 className="font-bold text-[#FAFAF9] text-[22px]">{"캘로그"}</h1>
-          <Tag label="Team" />
+          <h1 className="font-bold text-[#FAFAF9] text-[22px]">
+            {project.name}
+          </h1>
+          <Tag label={project.category} />
         </div>
-        <span className="font-medium text-[14px]">{"2024-07 ~ 현재"}</span>
+        <span className="font-medium text-[14px]">{project.term}</span>
         <span className="font-medium text-[14px] truncate whitespace-nowrap">
-          {
-            "구글 캘린더와 쓰레드를 모티브로 만든 캘린더 기반 커뮤니티 플랫폼 API 사이드 프로젝트"
-          }
+          {project.description}
         </span>
         <div className="flex items-center gap-3 mt-4">
-          {["Html", "JavaScript", "TypeScript", "Next.js"].map(skill => (
+          {project.techStacks.map((skill, skillIndex) => (
             <Image
-              key={skill}
+              key={skillIndex}
               src={`/icons/${skill}.svg`}
               alt={`${skill}`}
               width={20}
@@ -47,7 +48,9 @@ const ProjectCard = () => {
           ))}
         </div>
       </div>
-      {isOpen && <ProjectModal onClose={openToggle} />}
+      {isOpen && (
+        <ProjectModal project={project} onClose={() => setIsOpen(false)} />
+      )}
     </motion.div>
   );
 };
