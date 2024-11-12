@@ -40,7 +40,7 @@ const ProjectCard = ({ project }: { project: TProjectData }) => {
           {project.techStacks.map((skill, skillIndex) => (
             <Image
               key={skillIndex}
-              src={`/icons/${skill}.svg`}
+              src={`/icons/stacks/${skill}.svg`}
               alt={`${skill}`}
               width={20}
               height={20}

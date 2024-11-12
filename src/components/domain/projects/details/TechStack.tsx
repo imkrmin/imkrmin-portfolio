@@ -1,4 +1,3 @@
-import { TTroubleShooting } from "@/types/Projects";
 import Image from "next/image";
 
 const TechStack = ({ techStacks }: { techStacks: string[] }) => {

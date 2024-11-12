@@ -40,3 +40,24 @@ export const HEADER_ICONS = [
     height: 150,
   },
 ];
+
+export const CONTACT_ICONS = [
+  {
+    name: "GitHub",
+    href: "https://github.com/imkrmin",
+    src: "/icons/stacks/GitHub.svg",
+    alt: "깃허브 아이콘",
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/imkrmin/",
+    src: "/icons/insta.svg",
+    alt: "인스타그램 아이콘",
+  },
+  {
+    name: "Email",
+    href: "mailto:zum2n2@gmail.com",
+    src: "/icons/google.svg",
+    alt: "구글 아이콘",
+  },
+];

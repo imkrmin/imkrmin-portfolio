@@ -33,7 +33,7 @@ const TechStacks = () => {
             className="flex flex-col justify-center items-center gap-2 bg-[#171717] w-[100px] h-[120px] p-4 rounded-[10px]"
           >
             <Image
-              src={`/icons/${item}.svg`}
+              src={`/icons/stacks/${item}.svg`}
               alt={`${item}`}
               width={50}
               height={50}
