@@ -3,16 +3,34 @@ import { Counter } from "@/schema/counter";
 import { Guestbook } from "@/schema/guestbookSchema";
 import { NextResponse } from "next/server";
 
-export async function GET() {
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const page = parseInt(searchParams.get("page") || "1", 10);
+  const pageSize = parseInt(searchParams.get("pageSize") || "4", 10);
+
   try {
     await connectDB();
 
     const guestbooks = await Guestbook.find(
       {},
       "id totalPosts nickname message createdAt"
-    ).sort({ createdAt: -1 });
+    )
+      .sort({ createdAt: -1 })
+      .skip((page - 1) * pageSize)
+      .limit(pageSize);
 
-    return NextResponse.json({ guestbooks: guestbooks }, { status: 200 });
+    const totalGuestbooks = await Guestbook.countDocuments();
+    const totalPages = Math.ceil(totalGuestbooks / pageSize);
+
+    return NextResponse.json(
+      {
+        guestbooks,
+        totalPages,
+        currentPage: page,
+        totalGuestbooks,
+      },
+      { status: 200 }
+    );
   } catch (error: any) {
     return NextResponse.json(
       { error: "데이터 가져오기 실패" },
@@ -37,22 +55,18 @@ export async function POST(req: Request) {
       await counter.save();
     }
 
-    const updateTotalPosts = counter.guestbookIdCounter + 1;
+    const newPostId = counter.guestbookIdCounter + 1;
 
-    await Counter.updateOne(
-      { id: 0 },
-      { guestbookIdCounter: updateTotalPosts }
-    );
+    await Counter.updateOne({ id: 0 }, { guestbookIdCounter: newPostId });
 
     const newGuestbook = {
       id: id,
-      totalPosts: updateTotalPosts,
+      totalPosts: newPostId,
       nickname: nickname,
       password: password,
       message: message,
     };
 
-    // 방명록 생성
     await Guestbook.create(newGuestbook);
 
     return NextResponse.json(
