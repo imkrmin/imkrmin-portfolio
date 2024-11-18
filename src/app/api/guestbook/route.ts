@@ -1,7 +1,8 @@
 import connectDB from "@/lib/database/db";
+import { NextResponse } from "next/server";
 import { Counter } from "@/schema/counter";
 import { Guestbook } from "@/schema/guestbookSchema";
-import { NextResponse } from "next/server";
+const bcrypt = require("bcrypt");
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -83,21 +84,44 @@ export async function POST(req: Request) {
 }
 
 export async function DELETE(req: Request): Promise<NextResponse> {
-  const { id } = await req.json();
+  const { id, password } = await req.json();
   try {
     await connectDB();
 
-    const response = await Guestbook.findByIdAndDelete(id);
+    const guestbook = await Guestbook.findById(id);
 
-    if (!response) {
+    if (!guestbook) {
       return NextResponse.json(
-        { message: "사용자를 찾을 수 없습니다." },
+        { message: "방명록을 찾을 수 없습니다." },
         { status: 404 }
       );
     }
 
-    return NextResponse.json("방명록을 성공적으로 삭제하였습니다.");
-  } catch (error: any) {
-    throw new Error(error);
+    const isPasswordValid = await bcrypt.compare(password, guestbook.password);
+    if (!isPasswordValid) {
+      return NextResponse.json(
+        { message: "비밀번호가 일치하지 않습니다." },
+        { status: 403 }
+      );
+    }
+
+    const deletedCounter = guestbook.totalPosts;
+    await Guestbook.findByIdAndDelete(id);
+
+    await Guestbook.updateMany(
+      { totalPosts: { $gt: deletedCounter } },
+      { $inc: { totalPosts: -1 } }
+    );
+
+    return NextResponse.json(
+      { message: "방명록이 성공적으로 삭제되었습니다." },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("DELETE Error:", error);
+    return NextResponse.json(
+      { message: "서버 에러가 발생했습니다. 잠시 후 다시 시도해주세요." },
+      { status: 500 }
+    );
   }
 }

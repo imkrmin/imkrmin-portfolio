@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { v4 as uuidv4 } from "uuid";
+const bcrypt = require("bcrypt");
 
 const guestbookSchema = new mongoose.Schema(
   {
@@ -25,6 +26,13 @@ const guestbookSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+guestbookSchema.pre("save", async function (next) {
+  if (this.isModified("password")) {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
+  next();
+});
 
 export const Guestbook =
   mongoose.models.Guestbook || mongoose.model("Guestbook", guestbookSchema);

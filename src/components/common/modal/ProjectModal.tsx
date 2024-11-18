@@ -1,12 +1,12 @@
 import ModalContainer from "./ModalContainer";
 import Tag from "../Tag";
-import GoToButton from "@/components/domain/projects/details/GoToButton";
-import ImageSwiper from "@/components/domain/projects/details/ImageSwiper";
-import Features from "@/components/domain/projects/details/Features";
-import TechStack from "@/components/domain/projects/details/TechStack";
-import Contributions from "@/components/domain/projects/details/Contributions";
-import TroubleShooting from "@/components/domain/projects/details/TroubleShooting";
-import { TProjectData } from "@/types/Projects";
+import GoToButton from "@/components/domains/projects/details/GoToButton";
+import ImageSwiper from "@/components/domains/projects/details/ImageSwiper";
+import Features from "@/components/domains/projects/details/Features";
+import TechStack from "@/components/domains/projects/details/TechStack";
+import Contributions from "@/components/domains/projects/details/Contributions";
+import TroubleShooting from "@/components/domains/projects/details/TroubleShooting";
+import { TProjectData } from "@/types/projects";
 
 type ProjectModalProps = {
   onClose: () => void;
@@ -29,7 +29,11 @@ const ProjectModal = ({ onClose, project }: ProjectModalProps) => {
   } = project;
 
   return (
-    <ModalContainer onClose={onClose} isCloseClickOutside>
+    <ModalContainer
+      onClose={onClose}
+      variantClasses="w-auto max-w-[1200px] h-auto my-10 mx-auto tablet:mx-5"
+      isCloseClickOutside
+    >
       <article className="relative flex flex-col items-center w-full min-h-screen gap-20 pt-10 p-5">
         <div className="w-full h-auto flex flex-col items-center gap-1">
           <Tag label={category} />
