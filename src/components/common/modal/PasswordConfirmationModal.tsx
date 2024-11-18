@@ -1,16 +1,17 @@
+import { useState } from "react";
 import InputField from "@/components/domains/guestbook/InputField";
 import ModalContainer from "./ModalContainer";
-import { useState } from "react";
-
-type PasswordConfirmationModalProps = {
-  onClose: () => void;
-  id: string;
-};
+import { deleteGuestbook } from "@/lib/database/action";
 
 const PasswordConfirmationModal = ({
   onClose,
   id,
-}: PasswordConfirmationModalProps) => {
+  reloadGuestbooks,
+}: {
+  onClose: () => void;
+  id: string;
+  reloadGuestbooks: () => Promise<void>;
+}) => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -20,18 +21,13 @@ const PasswordConfirmationModal = ({
       return;
     }
 
-    const response = await fetch("/api/guestbook", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id, password }),
-    });
-
-    if (response.ok) {
-      alert("방명록이 성공적으로 삭제되었습니다.");
+    try {
+      const message = await deleteGuestbook(id, password);
+      alert(message);
       onClose();
-    } else {
-      const data = await response.json();
-      alert(data.message || "방명록 삭제를 실패했습니다.");
+      reloadGuestbooks();
+    } catch (error: any) {
+      alert(error.message);
     }
   };
 
@@ -66,6 +62,7 @@ const PasswordConfirmationModal = ({
         <InputField
           name="password"
           type="password"
+          value={password}
           onChange={handleChange}
           errorMessage={errorMessage}
         />

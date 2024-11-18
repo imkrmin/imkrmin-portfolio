@@ -1,8 +1,15 @@
+"use client";
+
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import InputField from "./InputField";
+import { createGuestbook } from "@/lib/database/action";
 
-const WrittingContent = () => {
+const WrittingContent = ({
+  reloadGuestbooks,
+}: {
+  reloadGuestbooks: () => Promise<void>;
+}) => {
   const [formData, setFormData] = useState({
     nickname: "",
     password: "",
@@ -34,20 +41,22 @@ const WrittingContent = () => {
 
     const id = uuidv4();
 
-    const response = await fetch("/api/guestbook", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+    try {
+      await createGuestbook({
         id,
         nickname: formData.nickname,
         password: formData.password,
         message: formData.message,
-      }),
-    });
-
-    if (response.ok) {
+      });
       alert("방명록이 성공적으로 작성되었습니다!");
-    } else {
+
+      setFormData({
+        nickname: "",
+        password: "",
+        message: "",
+      });
+      reloadGuestbooks();
+    } catch (error) {
       alert("방명록 작성에 실패했습니다.");
     }
   };
@@ -64,6 +73,7 @@ const WrittingContent = () => {
             name="nickname"
             type="text"
             onChange={handleChange}
+            value={formData.nickname}
           />
           <InputField
             label="비밀번호"
@@ -71,6 +81,7 @@ const WrittingContent = () => {
             type="password"
             onChange={handleChange}
             errorMessage={errorMessage}
+            value={formData.password}
           />
         </div>
         <div className="flex flex-col gap-2 w-full">
@@ -82,6 +93,7 @@ const WrittingContent = () => {
               name="message"
               id="message"
               onChange={handleChange}
+              value={formData.message}
               className="w-full text-[#262626] bg-[#F5F5F4] font-medium resize-none overflow-hidden h-[100px]"
             />
           </div>

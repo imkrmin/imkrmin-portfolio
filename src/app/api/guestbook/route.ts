@@ -34,7 +34,7 @@ export async function GET(request: Request) {
     );
   } catch (error: any) {
     return NextResponse.json(
-      { error: "데이터 가져오기 실패" },
+      { error: "방명록 가져오기 실패" },
       { status: 500 }
     );
   }
@@ -77,7 +77,7 @@ export async function POST(req: Request) {
   } catch (error: any) {
     console.error("Error creating guestbook entry:", error);
     return NextResponse.json(
-      { error: "방명록을 작성하는데 실패하였습니다." },
+      { message: "방명록을 작성하는데 실패하였습니다." },
       { status: 500 }
     );
   }
@@ -106,12 +106,15 @@ export async function DELETE(req: Request): Promise<NextResponse> {
     }
 
     const deletedCounter = guestbook.totalPosts;
+
     await Guestbook.findByIdAndDelete(id);
 
     await Guestbook.updateMany(
       { totalPosts: { $gt: deletedCounter } },
       { $inc: { totalPosts: -1 } }
     );
+
+    await Counter.updateOne({ id: 0 }, { guestbookIdCounter: deletedCounter });
 
     return NextResponse.json(
       { message: "방명록이 성공적으로 삭제되었습니다." },

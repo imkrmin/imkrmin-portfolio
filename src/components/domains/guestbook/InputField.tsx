@@ -8,10 +8,12 @@ const InputField = ({
   type = "text",
   onChange,
   errorMessage,
+  value,
 }: {
   label?: "이름" | "비밀번호";
   name: "nickname" | "password";
   type?: string;
+  value: string;
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   errorMessage?: string;
 }) => {
@@ -33,6 +35,7 @@ const InputField = ({
         <input
           name={name}
           id={name}
+          value={value}
           type={inputType}
           className={`w-full bg-[#F5F5F4] rounded-[5px] text-[#262626] font-medium p-2 ${
             errorMessage ? "border border-[#E11D48]" : ""
@@ -44,7 +47,7 @@ const InputField = ({
             type="button"
             onClick={handleToggleVisibility}
             className={`absolute right-3 ${
-              errorMessage ? "top-[16%]" : "top-1/4"
+              errorMessage ? "top-[20%]" : "top-1/4"
             } text-sm text-[#525252] hover:text-black`}
           >
             {isPasswordVisible ? (
@@ -55,7 +58,9 @@ const InputField = ({
           </button>
         )}
         {errorMessage && (
-          <span className="text-[#E11D48] text-[12px]">{errorMessage}</span>
+          <span className="absolute left-1 -bottom-6 text-[#E11D48] text-[12px]">
+            {errorMessage}
+          </span>
         )}
       </div>
     </div>
