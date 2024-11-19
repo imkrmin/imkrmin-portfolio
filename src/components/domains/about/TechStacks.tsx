@@ -22,7 +22,7 @@ const TechStacks = () => {
           "Zustand",
           "MongoDB",
           "Postman",
-          "Github",
+          "GitHub",
           "Figma",
           "Notion",
         ].map((item: string, index: number) => (

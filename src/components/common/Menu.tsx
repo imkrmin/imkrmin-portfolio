@@ -43,8 +43,8 @@ const Menu = () => {
   }, [menuItems]);
 
   return (
-    <nav className="tablet:w-full">
-      <ul className="sticky top-10 tablet:top-0 z-20 mt-1 flex flex-col tablet:flex-row tablet:justify-center tablet:items-center gap-8 mobile:gap-5 h-screen tablet:h-[80px] mobile:h-[50px] w-[220px] tablet:w-full bg-[#232323]">
+    <nav className="tablet:w-full sticky tablet:top-0 z-20 mt-1">
+      <ul className="sticky top-10 flex flex-col tablet:flex-row tablet:justify-center tablet:items-center gap-8 mobile:gap-5 h-screen tablet:h-[80px] mobile:h-[50px] w-[220px] tablet:w-full bg-[#232323]">
         {menuItems.map(item => (
           <li key={item.href}>
             <Link

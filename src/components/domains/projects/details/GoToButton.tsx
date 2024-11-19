@@ -8,7 +8,7 @@ const GoToButton = ({ url, github }: { url?: string; github?: string }) => {
         <a href={github} target="_blank">
           <button className="flex justify-center items-center gap-2 w-[150px] mobile:w-[120px] p-2 rounded-[5px] bg-[#737373] bg-opacity-80 text-[#FAFAF9] mobile:text-[12px] hover:bg-opacity-20">
             <Image
-              src="/icons/stacks/Github.svg"
+              src="/icons/stacks/GitHub.svg"
               alt="깃허브 아이콘"
               width={20}
               height={20}

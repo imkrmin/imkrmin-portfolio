@@ -47,8 +47,8 @@ const Header = () => {
     ));
 
   return (
-    <div className="sticky top-0 flex flex-col bg-header bg-cover animate-gradient-move h-screen tablet:max-h-[800px] mobile:max-h-[400px]">
-      <div className="flex over w-full mobile:px-5 h-full justify-center items-center gap-[85px] tablet:gap-[20px]">
+    <div className="sticky top-0 flex flex-col bg-header bg-cover animate-gradient-move h-screen tablet:max-h-[800px] mobile:max-h-[300px]">
+      <div className="flex w-full mobile:px-5 h-full justify-center items-center gap-[85px] tablet:gap-[20px]">
         {renderIcons()}
       </div>
       <SlidingText />

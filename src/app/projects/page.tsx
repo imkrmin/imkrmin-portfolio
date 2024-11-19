@@ -60,7 +60,7 @@ export default function ProjectsPage() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -10, opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="grid grid-cols-3 tablet:grid-cols-2 mobile:grid-cols-1 w-full h-[950px] mobile:h-auto gap-10 px-5"
+          className="grid grid-cols-3 tablet:grid-cols-2 mobile:grid-cols-1 w-full h-[950px] tablet:h-auto gap-10 px-5"
         >
           {filteredProjects.map((project: TProjectData, index: number) => (
             <ProjectCard key={index} project={project} />

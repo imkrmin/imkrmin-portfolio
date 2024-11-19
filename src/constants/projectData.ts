@@ -26,7 +26,7 @@ export const ProjectData: TProjectData[] = [
       "Vercel",
       "Postman",
     ],
-    url: "",
+    url: "https://imkrmin-portfolio.vercel.app/",
     github: "https://github.com/imkrmin/imkrmin-portfolio",
     features: [
       { id: 1, text: "피드백을 반영하여 지속적으로 개선 중" },
