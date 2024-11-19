@@ -41,6 +41,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={`${pretendard.variable}`}>
+      <head>
+        <link rel="icon" href="/icons/favicon.ico" />
+      </head>
       <body className="relative font-pretendard flex flex-col w-full mx-auto justify-center">
         {children}
         <ScrollToTopButton />

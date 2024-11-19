@@ -3,7 +3,7 @@ import { OpenGraphType } from "next/dist/lib/metadata/types/opengraph-types";
 export const METADATA = {
   title: "임주민 | 프론트엔드 포트폴리오",
   description: "프론트엔드 개발자 임주민의 개인 포트폴리오입니다.🌟",
-  imageUrl: "/images/projects/portfolio_1.jpg",
+  imageUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/images/projects/portfolio_1.jpg`,
   url: process.env.LOCAL_URL as string,
   locale: "ko_KR",
   type: "website" as OpenGraphType,
