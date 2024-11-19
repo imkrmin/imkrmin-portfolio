@@ -114,7 +114,8 @@ export async function DELETE(req: Request): Promise<NextResponse> {
       { $inc: { totalPosts: -1 } }
     );
 
-    await Counter.updateOne({ id: 0 }, { guestbookIdCounter: deletedCounter });
+    const remainingPosts = await Guestbook.countDocuments();
+    await Counter.updateOne({ id: 0 }, { guestbookIdCounter: remainingPosts });
 
     return NextResponse.json(
       { message: "방명록이 성공적으로 삭제되었습니다." },
