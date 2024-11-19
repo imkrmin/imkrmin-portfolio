@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import ScrollToTopButton from "@/components/common/ScrollToTopButton";
 import "./globals.css";
+import { METADATA } from "@/constants/metadata";
 
 const pretendard = localFont({
   src: "../fonts/PretendardVariable.woff2",
@@ -11,13 +12,26 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "임주민 | 프론트엔드 포트폴리오",
-  description: "프론트엔드 개발자 임주민의 개인 포트폴리오입니다.🌟",
+  title: METADATA.title,
+  description: METADATA.description,
   openGraph: {
-    title: "임주민 | 프론트엔드 포트폴리오",
-    description: "프론트엔드 개발자 임주민의 개인 포트폴리오입니다.🌟",
-    images: "/images/projects/portfolio_1.jpg",
+    title: METADATA.title,
+    description: METADATA.description,
+    images: [
+      {
+        url: METADATA.imageUrl,
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: METADATA.locale,
+    type: METADATA.type,
   },
+  creator: METADATA.creator,
+  generator: METADATA.generator,
+  publisher: METADATA.publisher,
+  applicationName: METADATA.publisher,
+  keywords: METADATA.keywords,
 };
 
 export default function RootLayout({
