@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache";
 export const fetchGuestbooks = async (page: number, pageSize: number) => {
   try {
     const response = await fetch(
-      `${process.env.LOCAL_URL}/api/guestbook?page=${page}&pageSize=${pageSize}`
+      `${process.env.NEXT_PUBLIC_APP_URL}/api/guestbook?page=${page}&pageSize=${pageSize}`
     );
 
     if (!response.ok) {
@@ -25,13 +25,16 @@ export const createGuestbook = async (data: {
   message: string;
 }) => {
   try {
-    const response = await fetch(`${process.env.LOCAL_URL}/api/guestbook`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_APP_URL}/api/guestbook`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
 
     if (!response.ok) {
       throw new Error("방명록 작성에 실패했습니다.");
@@ -52,11 +55,14 @@ export const createGuestbook = async (data: {
 
 export const deleteGuestbook = async (id: string, password: string) => {
   try {
-    const response = await fetch(`${process.env.LOCAL_URL}/api/guestbook`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id, password }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_APP_URL}/api/guestbook`,
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, password }),
+      }
+    );
 
     const result = await response.json();
 
