@@ -4,6 +4,7 @@ import { CONTACT_ICONS } from "@/constants/icons";
 import { TContactIcons } from "@/types/icons";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { FaCloudDownloadAlt } from "react-icons/fa";
 
 export default function ContactPage() {
   return (
@@ -11,7 +12,7 @@ export default function ContactPage() {
       id="contact"
       className="flex flex-col justify-between items-center w-full h-full"
     >
-      <div className="flex flex-col items-center gap-2 m-10">
+      <div className="flex flex-col items-center gap-2 mt-10">
         <motion.img
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -42,6 +43,16 @@ export default function ContactPage() {
             </motion.a>
           ))}
         </div>
+        <a
+          href="https://drive.google.com/file/d/1XDlU0OQBRro4zOb94eXocv5VtjlA9YfU/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button className="flex justify-center items-center gap-2 w-[150px] p-2 rounded-[5px] bg-[#737373] bg-opacity-80 text-[#FAFAF9] mobile:text-[12px] hover:bg-opacity-20  hover:border hover:border-[#F5F5F5] mt-10">
+            <FaCloudDownloadAlt className="w-5 h-5" />
+            이력서 다운받기
+          </button>
+        </a>
       </div>
     </section>
   );

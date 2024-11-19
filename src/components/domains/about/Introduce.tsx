@@ -1,4 +1,3 @@
-import Tag from "@/components/common/Tag";
 import FilpImg from "./FlipImg";
 
 const Introduce = () => {
@@ -42,13 +41,6 @@ const Introduce = () => {
               증명할 준비가 되어 있습니다.
             </p>
           </div>
-        </div>
-        <div className="flex mobile:justify-center gap-4">
-          {["#열정적인", "#악어거북", "#피드백_수용"].map(
-            (item: string, index: number) => (
-              <Tag key={index} label={item} variantClassess="text-[14px]" />
-            )
-          )}
         </div>
         <span className="mt-4 font-semibold">Update。2024년 11월 19일</span>
       </div>

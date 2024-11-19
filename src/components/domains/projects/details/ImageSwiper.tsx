@@ -52,9 +52,9 @@ const ImageSwiper = ({ images }: ImageSwiperProps) => {
         alt="선택된 이미지"
         width={1000}
         height={600}
-        className="w-full h-[550px] mobile:h-[180px] object-cover rounded-[5px] border border-[#404040]"
+        className="w-full h-full object-cover rounded-[5px] border border-[#404040]"
       />
-      <div className="flex justify-center items-center gap-5">
+      <div className="flex justify-center items-center gap-5 mobile:gap-2">
         <FaRegArrowAltCircleLeft
           className={`text-[40px] cursor-pointer ${
             startIndex === 0 ? "text-[#737373] cursor-not-allowed" : ""
@@ -71,7 +71,7 @@ const ImageSwiper = ({ images }: ImageSwiperProps) => {
                 alt={`포트폴리오 사이트 이미지 ${index + 1}`}
                 width={300}
                 height={200}
-                className={`w-full max-w-[300px] h-[200px] mobile:w-[220px] mobile:h-[120px] rounded-[5px] object-cover cursor-pointer ${
+                className={`w-full max-w-[300px] h-[200px] mobile:w-[230px] mobile:h-[150px] rounded-[5px] object-cover cursor-pointer ${
                   selectImage === image
                     ? "border-2 border-[#A3A3A3]"
                     : "border border-[#404040]"

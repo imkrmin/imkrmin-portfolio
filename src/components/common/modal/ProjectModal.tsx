@@ -36,7 +36,7 @@ const ProjectModal = ({
       isCloseClickOutside
       isProjectModal
     >
-      <article className="flex flex-col items-center w-full mobile:w-[350px] min-h-screen gap-20 pt-10 p-10 mobile:px-0">
+      <article className="flex flex-col items-center w-full min-h-screen gap-20 pt-10 p-10 mobile:px-0">
         <div className="w-full h-auto flex flex-col items-center gap-1">
           <Tag label={category} variantClassess="text-[10px]" />
           <h1 className="font-bold text-[#FAFAF9] text-[40px] mobile:text-[25px]">

@@ -17,7 +17,7 @@ const Header = () => {
             href={icon.href}
             target={icon.target}
             rel={icon.rel}
-            className="cursor-pointer"
+            className="cursor-pointer mobile:hidden"
           >
             <motion.img
               whileHover={{ scale: 1.1 }}
@@ -39,7 +39,9 @@ const Header = () => {
               alt={icon.alt}
               width={icon.width}
               height={icon.height}
-              className="cursor-pointer"
+              className={`cursor-pointer ${
+                icon.alt === "프로필 아이콘" ? "" : "mobile:hidden"
+              } `}
             />
           </Link>
         )}
@@ -47,7 +49,8 @@ const Header = () => {
     ));
 
   return (
-    <div className="sticky top-0 flex flex-col bg-header bg-cover animate-gradient-move h-screen tablet:max-h-[800px] mobile:max-h-[300px]">
+    <div className="sticky top-0 flex flex-col bg-header bg-cover animate-gradient-move h-screen tablet:max-h-[800px]">
+      <div></div>
       <div className="flex w-full mobile:px-5 h-full justify-center items-center gap-[85px] tablet:gap-[20px]">
         {renderIcons()}
       </div>
