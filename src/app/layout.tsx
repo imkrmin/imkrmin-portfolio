@@ -13,6 +13,11 @@ const pretendard = localFont({
 export const metadata: Metadata = {
   title: "임주민 | 프론트엔드 포트폴리오",
   description: "프론트엔드 개발자 임주민의 개인 포트폴리오입니다.🌟",
+  openGraph: {
+    title: "임주민 | 프론트엔드 포트폴리오",
+    description: "프론트엔드 개발자 임주민의 개인 포트폴리오입니다.🌟",
+    images: "/images/projects/portfolio_1.jpg",
+  },
 };
 
 export default function RootLayout({
