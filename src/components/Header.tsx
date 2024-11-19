@@ -1,38 +1,61 @@
-import Image from "next/image";
+"use client";
+
 import SlidingText from "./SlidingText";
 import { MdKeyboardDoubleArrowDown } from "react-icons/md";
-
-const textVariants = {
-  initial: {
-    x: -500,
-    opacity: 0,
-  },
-  animate: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      duration: 1,
-      staggerChildren: 0.1,
-    },
-  },
-};
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { THeaderIcons } from "@/types/icons";
+import { HEADER_ICONS } from "@/constants/icons";
+import CustomTooltip from "./common/CustomTooltip";
 
 const Header = () => {
+  const renderIcons = () =>
+    HEADER_ICONS.map((icon: THeaderIcons, index) => (
+      <CustomTooltip key={index} text={icon.tooltipText}>
+        {icon.isExternal ? (
+          <a
+            href={icon.href}
+            target={icon.target}
+            rel={icon.rel}
+            className="cursor-pointer"
+          >
+            <motion.img
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              src={icon.src}
+              alt={icon.alt}
+              width={icon.width}
+              height={icon.height}
+            />
+          </a>
+        ) : (
+          <Link href={icon.href}>
+            <motion.img
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              src={icon.src}
+              alt={icon.alt}
+              width={icon.width}
+              height={icon.height}
+              className="cursor-pointer"
+            />
+          </Link>
+        )}
+      </CustomTooltip>
+    ));
+
   return (
-    <section className="flex flex-col bg-header bg-cover">
-      {/* <div className="absolute flex justify-center">
-        <Image
-          src={"/images/profileimg.jpg"}
-          alt="프로필 이미지"
-          width={300}
-          height={400}
-        />
-      </div> */}
+    <div className="sticky top-0 flex flex-col bg-header bg-cover animate-gradient-move h-screen tablet:max-h-[800px] mobile:max-h-[400px]">
+      <div className="flex over w-full mobile:px-5 h-full justify-center items-center gap-[85px] tablet:gap-[20px]">
+        {renderIcons()}
+      </div>
       <SlidingText />
       <div className="flex justify-center mb-2">
-        <MdKeyboardDoubleArrowDown className="text-[#e3e3e3] w-12 h-12 animate-bounce" />
+        <MdKeyboardDoubleArrowDown className="text-white w-12 h-12 mobile:w-8 mobile:h-8 animate-bounce" />
       </div>
-    </section>
+    </div>
   );
 };
 
