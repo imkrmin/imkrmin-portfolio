@@ -16,7 +16,7 @@ const GuestbookCard = ({
   const formattedDate = date.toISOString().split("T")[0];
 
   return (
-    <div className="flex flex-col w-full max-w-[1000px] h-[200px] bg-[#404040] bg-opacity-80 rounded-[5px]">
+    <div className="flex flex-col w-full max-w-[800px] h-[200px] bg-[#404040] bg-opacity-80 rounded-[5px]">
       <div className="flex justify-between w-full bg-[#171717] rounded-t-[5px] py-2 px-5">
         <div className="flex items-center gap-5">
           <span className="font-semibold">{`No.${totalPosts}`}</span>

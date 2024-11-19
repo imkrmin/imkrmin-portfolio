@@ -31,15 +31,16 @@ const InputField = ({
       <label htmlFor={name} className="font-semibold">
         {label}
       </label>
-      <div className="relative">
+      <div
+        className={`relative w-full bg-[#F5F5F4] rounded-[5px] text-[#262626] font-medium p-2 ${
+          errorMessage ? "border border-[#E11D48]" : ""
+        }`}
+      >
         <input
           name={name}
           id={name}
           value={value}
           type={inputType}
-          className={`w-full bg-[#F5F5F4] rounded-[5px] text-[#262626] font-medium p-2 ${
-            errorMessage ? "border border-[#E11D48]" : ""
-          }`}
           onChange={onChange}
         />
         {name === "password" && (

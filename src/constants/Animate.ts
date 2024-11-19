@@ -12,7 +12,7 @@ export const SLIDER_VARIANTS = {
   },
 };
 
-export const ABOUT_VARIANTS = {
+export const UP_VARIANTS = {
   initial: {
     y: 500,
     opacity: 0,
@@ -27,9 +27,9 @@ export const ABOUT_VARIANTS = {
   },
 };
 
-export const PROJECT_VARIANTS = {
+export const SIDE_VARIANTS = {
   initial: {
-    x: -500,
+    x: -300,
     opacity: 0,
   },
   animate: {

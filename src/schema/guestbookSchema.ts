@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { v4 as uuidv4 } from "uuid";
-const bcrypt = require("bcrypt");
+import bcrypt from "bcryptjs";
 
 const guestbookSchema = new mongoose.Schema(
   {

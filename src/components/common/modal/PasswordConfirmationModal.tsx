@@ -26,8 +26,14 @@ const PasswordConfirmationModal = ({
       alert(message);
       onClose();
       reloadGuestbooks();
-    } catch (error: any) {
-      alert(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error("방명록 삭제 오류:", error.message);
+        alert(error.message);
+      } else {
+        console.error("알 수 없는 오류 발생", error);
+        alert("알 수 없는 오류가 발생했습니다.");
+      }
     }
   };
 

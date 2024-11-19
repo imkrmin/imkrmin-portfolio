@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const menuItems = [
   { label: "About me", href: "#about" },
   { label: "Projects", href: "#projects" },
-  { label: "Guest Book", href: "#guest-book" },
+  { label: "GuestBook", href: "#guestbook" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -24,7 +24,7 @@ const Menu = () => {
           }
         });
       },
-      { threshold: 0.6 }
+      { threshold: 0.3 }
     );
 
     sections.forEach(section => {
@@ -43,13 +43,13 @@ const Menu = () => {
   }, [menuItems]);
 
   return (
-    <nav>
-      <ul className="flex flex-col sticky top-10 gap-8 h-screen w-[220px]">
+    <nav className="tablet:w-full">
+      <ul className="sticky top-10 tablet:top-0 z-20 mt-1 flex flex-col tablet:flex-row tablet:justify-center tablet:items-center gap-8 mobile:gap-5 h-screen tablet:h-[80px] mobile:h-[50px] w-[220px] tablet:w-full bg-[#232323]">
         {menuItems.map(item => (
           <li key={item.href}>
             <Link
               href={item.href}
-              className={`font-snow text-[35px] block hover:text-white ${
+              className={`font-snow text-[35px] tablet:text-[25px] mobile:text-[15px] block hover:text-white ${
                 activeLink === item.href ? "text-white" : ""
               }`}
             >

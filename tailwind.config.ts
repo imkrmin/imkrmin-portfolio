@@ -19,7 +19,7 @@ const config: Config = {
     },
     extend: {
       backgroundImage: {
-        header: "url('/images/bg.jpg')",
+        header: "url('/images/bg(2).jpg')",
         "dot-pattern":
           "radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px)",
       },

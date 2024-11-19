@@ -56,18 +56,24 @@ const WrittingContent = ({
         message: "",
       });
       reloadGuestbooks();
-    } catch (error) {
-      alert("방명록 작성에 실패했습니다.");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error("방명록 작성 오류:", error.message);
+        alert(error.message);
+      } else {
+        console.error("알 수 없는 오류 발생", error);
+        alert("알 수 없는 오류가 발생했습니다.");
+      }
     }
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col justify-between gap-10 w-full max-w-[1000px] bg-[#171717] py-5 px-10 mb-10 rounded-[10px]"
+      className="flex flex-col justify-between gap-10 w-full max-w-[800px] bg-[#171717] py-5 px-10 mobile:px-8 mb-10 rounded-[10px]"
     >
-      <div className="flex flex-col gap-5">
-        <div className="flex justify-center w-full gap-20">
+      <div className="flex flex-col gap-5 mobile:gap-8">
+        <div className="flex mobile:flex-col justify-center w-full gap-20 mobile:gap-5">
           <InputField
             label="이름"
             name="nickname"

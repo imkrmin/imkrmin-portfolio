@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+export type TFilter = "All" | "Team" | "Solo";
 
 export type TFeatureOrContribution = {
   id: number;
@@ -12,11 +12,12 @@ export type TTroubleShooting = {
 };
 
 export type TProjectData = {
+  thumb: string;
   images: string[];
   name: string;
-  category: "Team" | "Single";
+  category: "Team" | "Solo";
   term: string;
-  description: ReactNode;
+  descriptions: string[];
   techStacks: string[];
   url?: string;
   github?: string;

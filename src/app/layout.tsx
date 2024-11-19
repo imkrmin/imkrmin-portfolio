@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
 import ScrollToTopButton from "@/components/common/ScrollToTopButton";
+import "./globals.css";
 
 const pretendard = localFont({
   src: "../fonts/PretendardVariable.woff2",
@@ -24,8 +24,8 @@ export default function RootLayout({
     <html lang="ko" className={`${pretendard.variable}`}>
       <body className="relative font-pretendard flex flex-col w-full mx-auto justify-center">
         {children}
-        <div id="modal" />
         <ScrollToTopButton />
+        <div id="modal" />
       </body>
     </html>
   );

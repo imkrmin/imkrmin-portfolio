@@ -1,6 +1,7 @@
 "use client";
 
-import { CONTACT_ICONS } from "@/constants/Icons";
+import { CONTACT_ICONS } from "@/constants/icons";
+import { TContactIcons } from "@/types/icons";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -19,13 +20,14 @@ export default function ContactPage() {
           alt="프로필 아이콘"
           width={300}
           height={300}
+          className="mobile:w-[200px]"
         />
-        <h1 className="font-bold text-4xl text-[#FAFAF9] mt-10">
+        <h1 className="font-bold text-4xl mobile:text-xl text-[#FAFAF9] mt-10 text-center">
           저의 포트폴리오를 봐주셔서 감사합니다.
         </h1>
         <span className="font-medium">아래를 통해 저에게 연락주세요!</span>
         <div className="flex justify-center items-center gap-5 mt-10">
-          {CONTACT_ICONS.map((item, index) => (
+          {CONTACT_ICONS.map((item: TContactIcons, index) => (
             <motion.a
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 500, damping: 30 }}
@@ -33,7 +35,7 @@ export default function ContactPage() {
               href={item.href}
               target="_blank"
               rel="noreferrer"
-              className="flex flex-col justify-center items-center gap-2 bg-[#171717] w-[150px] h-[180px] p-5 rounded-[10px] cursor-pointer hover:border hover:border-[#F5F5F5]"
+              className="flex flex-col justify-center items-center gap-2 bg-[#171717] w-[150px] mobile:w-[100px] h-[180px] mobile:h-[130px] p-5 rounded-[10px] cursor-pointer hover:border hover:border-[#F5F5F5]"
             >
               <Image src={item.src} alt={item.alt} width={80} height={80} />
               <span className="font-semibold text-center">{item.name}</span>

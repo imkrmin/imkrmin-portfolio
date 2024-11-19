@@ -1,8 +1,14 @@
-import React from "react";
-
-const Tag = ({ label }: { label: string }) => {
+const Tag = ({
+  label,
+  variantClassess,
+}: {
+  label: string;
+  variantClassess: string;
+}) => {
   return (
-    <span className="bg-[#E5E5E5] bg-opacity-80 w-fit p-1 rounded-[5px] text-[10px] text-center text-[#737373] font-bold">
+    <span
+      className={`bg-[#E5E5E5] bg-opacity-80 w-fit p-1 rounded-[5px] ${variantClassess} text-center text-[#525252] font-semibold`}
+    >
       {label}
     </span>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { PROJECT_VARIANTS } from "@/constants/animate";
+import { SIDE_VARIANTS } from "@/constants/animate";
 import { motion } from "framer-motion";
 import WrittingContent from "@/components/domains/guestbook/WrittingContent";
 import { useEffect, useRef, useState } from "react";
@@ -53,7 +53,7 @@ export default function GuestBookPage() {
   return (
     <motion.section
       ref={ref}
-      variants={PROJECT_VARIANTS}
+      variants={SIDE_VARIANTS}
       initial="initial"
       animate={isVisible ? "animate" : "initial"}
       id="guestbook"

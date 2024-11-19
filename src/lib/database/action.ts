@@ -39,9 +39,14 @@ export const createGuestbook = async (data: {
 
     revalidatePath("/");
     return await response.json();
-  } catch (error) {
-    console.error("방명록 작성 실패:", error);
-    throw new Error("방명록 작성 중 오류가 발생했습니다.");
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error("방명록 작성 오류:", error.message);
+      alert(error.message);
+    } else {
+      console.error("알 수 없는 오류 발생", error);
+      alert("알 수 없는 오류가 발생했습니다.");
+    }
   }
 };
 
@@ -61,8 +66,13 @@ export const deleteGuestbook = async (id: string, password: string) => {
 
     revalidatePath("/");
     return "방명록이 성공적으로 삭제되었습니다.";
-  } catch (error: any) {
-    console.error("방명록 삭제 실패:", error);
-    throw new Error(error.message || "방명록 삭제를 실패했습니다.");
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error("방명록 삭제 실패:", error);
+      throw new Error(error.message || "방명록 삭제를 실패했습니다.");
+    } else {
+      console.error("알 수 없는 오류 발생", error);
+      alert("알 수 없는 오류가 발생했습니다.");
+    }
   }
 };

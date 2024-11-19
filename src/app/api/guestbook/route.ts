@@ -2,7 +2,7 @@ import connectDB from "@/lib/database/db";
 import { NextResponse } from "next/server";
 import { Counter } from "@/schema/counter";
 import { Guestbook } from "@/schema/guestbookSchema";
-const bcrypt = require("bcrypt");
+import bcrypt from "bcryptjs";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -32,7 +32,7 @@ export async function GET(request: Request) {
       },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch {
     return NextResponse.json(
       { error: "방명록 가져오기 실패" },
       { status: 500 }
@@ -74,8 +74,7 @@ export async function POST(req: Request) {
       { message: "방명록을 성공적으로 작성했습니다." },
       { status: 200 }
     );
-  } catch (error: any) {
-    console.error("Error creating guestbook entry:", error);
+  } catch {
     return NextResponse.json(
       { message: "방명록을 작성하는데 실패하였습니다." },
       { status: 500 }

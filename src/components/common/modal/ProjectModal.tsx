@@ -8,18 +8,19 @@ import Contributions from "@/components/domains/projects/details/Contributions";
 import TroubleShooting from "@/components/domains/projects/details/TroubleShooting";
 import { TProjectData } from "@/types/projects";
 
-type ProjectModalProps = {
+const ProjectModal = ({
+  onClose,
+  project,
+}: {
   onClose: () => void;
   project: TProjectData;
-};
-
-const ProjectModal = ({ onClose, project }: ProjectModalProps) => {
+}) => {
   const {
     images,
     name,
     category,
     term,
-    description,
+    descriptions,
     techStacks,
     url,
     github,
@@ -31,23 +32,29 @@ const ProjectModal = ({ onClose, project }: ProjectModalProps) => {
   return (
     <ModalContainer
       onClose={onClose}
-      variantClasses="w-auto max-w-[1200px] h-auto my-10 mx-auto tablet:mx-5"
+      variantClasses="w-auto max-w-[1200px] mobile:w-full h-auto mobile:h-full my-10 mobile:my-0 tablet:my-20 mx-auto tablet:mx-20 mobile:mx-0 mobile:my-0"
       isCloseClickOutside
+      isProjectModal
     >
-      <article className="relative flex flex-col items-center w-full min-h-screen gap-20 pt-10 p-5">
+      <article className="flex flex-col items-center w-full mobile:w-[350px] min-h-screen gap-20 pt-10 p-10 mobile:px-0">
         <div className="w-full h-auto flex flex-col items-center gap-1">
-          <Tag label={category} />
-          <h1 className="font-bold text-[#FAFAF9] text-[40px] mobile:text-[30px]">
+          <Tag label={category} variantClassess="text-[10px]" />
+          <h1 className="font-bold text-[#FAFAF9] text-[40px] mobile:text-[25px]">
             {name}
           </h1>
-          <span className="font-medium text-[14px]">{term}</span>
-          <span className="font-medium text-[14px] text-center mt-2 whitespace-pre-line">
-            {description}
-          </span>
+          <p className="font-medium text-[14px] mobile:text-[12px]">{term}</p>
+          {descriptions?.map((description, index) => (
+            <p
+              key={index}
+              className="font-medium text-[14px] mobile:text-[12px] text-center leading-tight mt-2 whitespace-pre-line"
+            >
+              {description}
+            </p>
+          ))}
           <GoToButton url={url} github={github} />
           <ImageSwiper images={images} />
         </div>
-        <div className="flex flex-col w-full h-full gap-[50px] bg-[#FAFAF9] p-5 rounded-[5px]">
+        <div className="flex flex-col w-full max-w-[1050px] h-full gap-[50px] bg-[#FAFAF9] p-5 mobile:p-3 rounded-[5px]">
           <Features features={features} />
           <TechStack techStacks={techStacks} />
           {contributions && <Contributions contributions={contributions} />}

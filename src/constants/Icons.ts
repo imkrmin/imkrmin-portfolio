@@ -1,27 +1,32 @@
-export const HEADER_ICONS = [
+import { TContactIcons, THeaderIcons } from "@/types/icons";
+
+export const HEADER_ICONS: THeaderIcons[] = [
   {
     src: "/icons/project.svg",
     alt: "프로젝트 아이콘",
     tooltipText: "프로젝트 보러가기",
-    href: "#project",
+    href: "#projects",
     width: 150,
     height: 150,
+    isExternal: false,
   },
   {
     src: "/icons/guest-book.svg",
     alt: "방명록 아이콘",
     tooltipText: "방명록 작성하기",
-    href: "#guest-book",
+    href: "#guestbook",
     width: 150,
     height: 150,
+    isExternal: false,
   },
   {
     src: "/icons/profileicon.svg",
     alt: "프로필 아이콘",
     tooltipText: "안녕하세요. 프론트엔드 개발자 임주민입니다.",
-    href: "#about",
+    href: "/",
     width: 350,
     height: 350,
+    isExternal: false,
   },
   {
     src: "/icons/contact.svg",
@@ -30,18 +35,22 @@ export const HEADER_ICONS = [
     href: "#contact",
     width: 100,
     height: 50,
+    isExternal: false,
   },
   {
     src: "/icons/download.svg",
     alt: "다운로드 아이콘",
     tooltipText: "이력서 다운로드",
-    href: "",
+    href: "https://drive.google.com/file/d/1XDlU0OQBRro4zOb94eXocv5VtjlA9YfU/view?usp=sharing",
+    target: "_blank",
+    rel: "noopener noreferrer",
     width: 150,
     height: 150,
+    isExternal: true,
   },
 ];
 
-export const CONTACT_ICONS = [
+export const CONTACT_ICONS: TContactIcons[] = [
   {
     name: "GitHub",
     href: "https://github.com/imkrmin",
