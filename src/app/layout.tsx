@@ -17,13 +17,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: METADATA.title,
     description: METADATA.description,
-    images: [
-      {
-        url: METADATA.imageUrl,
-        width: 800,
-        height: 600,
-      },
-    ],
+    images: {
+      url: METADATA.imageUrl,
+    },
     locale: METADATA.locale,
     type: METADATA.type,
   },

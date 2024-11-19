@@ -36,7 +36,7 @@ const ProjectModal = ({
       isCloseClickOutside
       isProjectModal
     >
-      <article className="flex flex-col items-center w-full min-h-screen gap-20 pt-10 p-10 mobile:px-0">
+      <article className="flex flex-col items-center w-full gap-20">
         <div className="w-full h-auto flex flex-col items-center gap-1">
           <Tag label={category} variantClassess="text-[10px]" />
           <h1 className="font-bold text-[#FAFAF9] text-[40px] mobile:text-[25px]">
@@ -54,7 +54,7 @@ const ProjectModal = ({
           <GoToButton url={url} github={github} />
           <ImageSwiper images={images} />
         </div>
-        <div className="flex flex-col w-full max-w-[1050px] h-full gap-[50px] bg-[#FAFAF9] p-5 mobile:p-3 rounded-[5px]">
+        <div className="flex flex-col w-full h-full gap-[50px] bg-[#FAFAF9] p-5 mobile:p-3 rounded-[5px]">
           <Features features={features} />
           <TechStack techStacks={techStacks} />
           {contributions && <Contributions contributions={contributions} />}

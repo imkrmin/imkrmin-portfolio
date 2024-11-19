@@ -54,7 +54,7 @@ export default function ModalContainer(props: ModalContainerProps) {
           ref={modalRef}
           onClick={event => event.stopPropagation()}
           className={`flex flex-col items-center w-full h-full ${
-            isProjectModal && "overflow-y-auto p-5 mobile:p-2 scrollbar-hide"
+            isProjectModal && "overflow-y-auto p-10 scrollbar-hide"
           }`}
         >
           {children}

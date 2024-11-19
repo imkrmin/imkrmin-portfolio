@@ -89,6 +89,7 @@ const ImageSwiper = ({ images }: ImageSwiperProps) => {
           onClick={handleNext}
         />
       </div>
+      <span>사진을 클릭하면 크게 볼 수 있습니다.</span>
     </div>
   );
 };
